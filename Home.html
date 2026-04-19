@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* 🔥 BACKGROUND */
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    display: flex;
+}
+
+/* ========================= */
+/* SIDEBAR */
+/* ========================= */
+.sidebar {
+    width: 220px;
+    background: rgba(255,255,255,0.95);
+    padding: 20px;
+    backdrop-filter: blur(8px);
+    box-shadow: 5px 0 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.sidebar h2 {
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.sidebar a {
+    display: block;
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+
+.sidebar button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4facfe, #00c6ff);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar button:hover {
+    transform: translateX(5px);
+}
+
+/* ========================= */
+/* MAIN CONTENT */
+/* ========================= */
+.main {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Top bar */
+.topbar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logout-btn {
+    padding: 10px 16px;
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Content */
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* tengah horizontal */
+    justify-content: flex-start; /* dari atas */
+    gap: 25px; /* 🔥 ini yang atur jarak */
+    margin-top: 30px;
+}
+.card1 {
+    background: rgb(209, 243, 18);
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    margin-right: 10px;
+}
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    margin-right: 10px;
+}
+
+.card h1 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #666;
+    margin-bottom: 10pt;
+}
+
+.camera-box {
+
+    text-align: center;
+}
+
+video {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.camera-box button {
+    padding: 10px 15px;
+    border: none;
+    background: #4facfe;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Input */
+.card input {
+    width: 100%;
+    padding: 14px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    background: #f9f9f9;
+    transition: 0.3s;
+}
+
+/* Efek saat klik */
+.card input:focus {
+    border-color: #4facfe;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(79,172,254,0.4);
+}
+
+/* Placeholder */
+.card input::placeholder {
+    color: #aaa;
+}
+
+/* Tombol */
+.card button {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #4facfe, #00c6ff);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover tombol */
+.card button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+/* ========================= */
+/* 📱 RESPONSIVE TABLET & HP */
+/* ========================= */
+@media (max-width: 768px) {
+
+body {
+    flex-direction: column; /* sidebar jadi ke atas */
+}
+
+.sidebar {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.sidebar h2 {
+    display: none; /* sembunyikan judul biar hemat ruang */
+}
+
+.sidebar a {
+    margin: 0;
+}
+
+.sidebar button {
+    font-size: 12px;
+    padding: 10px;
+}
+
+.main {
+    padding: 15px;
+}
+
+.content {
+    margin-top: 10px;
+    gap: 20px;
+}
+
+.card {
+    max-width: 100%;
+    padding: 18px;
+}
+
+video {
+    max-width: 100%;
+}
+}
+
+/* ========================= */
+/* 📱 HP KECIL */
+/* ========================= */
+@media (max-width: 480px) {
+
+.sidebar {
+    flex-wrap: wrap; /* biar tidak kepanjangan */
+    gap: 8px;
+}
+
+.sidebar button {
+    font-size: 11px;
+    padding: 8px;
+}
+
+.card h1 {
+    font-size: 20px;
+}
+
+.card p {
+    font-size: 13px;
+}
+
+.card input {
+    padding: 12px;
+    font-size: 13px;
+}
+
+.card button {
+    padding: 12px;
+    font-size: 14px;
+}
+}
+
+/* ========================= */
+/* 📱 HP SANGAT KECIL */
+/* ========================= */
+@media (max-width: 320px) {
+
+.card {
+    padding: 15px;
+}
+
+.card h1 {
+    font-size: 18px;
+}
+
+.card input {
+    padding: 10px;
+    font-size: 12px;
+}
+
+.card button {
+    padding: 10px;
+    font-size: 13px;
+}
+}
+</style>
+</head>
+<script>
+    function openCamera() {
+        const video = document.getElementById('video');
+    
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function(stream) {
+                video.srcObject = stream;
+            })
+            .catch(function(error) {
+                alert("Kamera tidak bisa dibuka: " + error);
+            });
+    }
+
+    function kirimWA() {
+        let nama = document.getElementById("nama").value;
+        let pesan = document.getElementById("pesan").value;
+    
+        let nomor = "6282147731687";
+    
+        let text = "Halo, saya " + nama + "%0A" + pesan;
+    
+        let url = "https://wa.me/" + nomor + "?text=" + text;
+    
+        window.open(url, "_blank");
+    }
+    </script>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Welmina Shop</h2>
+
+    <a href="Home.html"><button>Dashboard</button></a>
+    <a href="https://www.google.com/maps/@-2.6051938,140.6547304,17z?entry=ttu&g_ep=EgoyMDI2MDQxNS4wIKXMDSoASAFQAw%3D%3D"><button>Google Maps</button></a>
+    <a href="https://jubi.id" target="_blank">
+        <button>Jubi Jayapura</button>
+    </a>
+    <div class="camera-box">
+        <button onclick="openCamera()">Buka Kamera</button>
+    </div>
+    
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <a href="login.html">
+            <button class="logout-btn">Logout</button>
+        </a>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="card1">
+            <h1>Selamat Datang</h1>
+            <p>Anda Berhasil Login</p>
+        </div>
+    
+        <div class="card">
+            <p>Kirim Pesan</p>
+            <input type="text" id="nama" placeholder="Nama">
+            <input type="text" id="pesan" placeholder="Pesan">
+            <button onclick="kirimWA()">Kirim</button>
+        </div>
+    
+        <div class="camera-box">
+            <video id="video" autoplay></video>
+        </div>
+    
+    </div>
+</body>
+</html>
